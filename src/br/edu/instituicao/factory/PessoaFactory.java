@@ -1,6 +1,5 @@
 package br.edu.instituicao.factory;
 import br.edu.instituicao.model.*;
-/** [PADRAO] Factory Method. */
 public class PessoaFactory {
     public static Pessoa criarAluno(String nome, String cpf, String email, String matricula) {
         return new Aluno(nome, cpf, email, matricula);

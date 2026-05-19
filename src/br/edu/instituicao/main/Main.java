@@ -44,22 +44,34 @@ public class Main {
                     secretaria.cadastrarPessoa(p);
                     System.out.println("Cadastro realizado com sucesso!");
                 }
-                case 3 -> {
-                    System.out.print("Digite a matrícula do aluno: ");
-                    String matricula = sc.nextLine();
-                    Aluno a = secretaria.buscarAlunoPorMatricula(matricula);
-                    if (a != null) {
-                        System.out.print("Quantas notas deseja lançar? ");
-                        int qtd = Integer.parseInt(sc.nextLine());
-                        for (int i = 1; i <= qtd; i++) {
-                            System.out.print("Nota " + i + ": ");
-                            a.adicionarNota(Double.parseDouble(sc.nextLine()));
-                        }
-                        System.out.println("Notas lançadas com sucesso!");
-                    } else {
-                        System.out.println("Aluno não encontrado.");
-                    }
+             case 3 -> {
+    System.out.print("Digite a matrícula do aluno: ");
+    String matricula = sc.nextLine();
+
+    Aluno a = secretaria.buscarAlunoPorMatricula(matricula);
+
+    if (a != null) {
+        a.getNotas().clear();
+        for (int i = 1; i <= 4; i++) {
+            double nota;
+            do {
+                System.out.print(i + "º Bimestre: ");
+                nota = Double.parseDouble(sc.nextLine());
+
+                if (nota < 0 || nota > 10) {
+                    System.out.println("A nota deve estar entre 0 e 10.");
                 }
+            } while (nota < 0 || nota > 10);
+            a.adicionarNota(nota);
+        }
+        System.out.printf(
+            "Notas lançadas com sucesso! Média final: %.2f%n",
+            a.getMediaFinal()
+        );
+    } else {
+        System.out.println("Aluno não encontrado.");
+    }
+}
                 case 4 -> secretaria.listarPessoas();
                 case 5 -> {
                     RelatorioAcademico rel = new RelatorioAcademico();
