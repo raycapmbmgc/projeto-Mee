@@ -15,6 +15,10 @@ Projeto desenvolvido com Programação Orientada a Objetos utilizando:
 javac -d out src/br/edu/instituicao/interfaces/*.java src/br/edu/instituicao/model/*.java src/br/edu/instituicao/factory/*.java src/br/edu/instituicao/service/*.java src/br/edu/instituicao/main/*.java
 java -cp out br.edu.instituicao.main.Main
 ```
+```
+javac -d out (Get-ChildItem -Recurse -Filter *.java | ForEach-Object { $_.FullName })
+java -cp out br.edu.instituicao.view.TelaPrincipal  
+```
 
 ## Por que Pessoa é abstrata?
 
